@@ -1,1 +1,1 @@
-from .order_viewset import OrderSerializer
+from .order_viewset import OrderViewSet
