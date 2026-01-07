@@ -1,2 +1,2 @@
-from .category_serializer import ProductSerializer
-from .product_serializer import CategorySerializer
+from .category_serializer import CategorySerializer
+from .product_serializer import ProductSerializer
