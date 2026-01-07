@@ -45,8 +45,11 @@ class TestProductViewSet(APITestCase):
         # self.client.credentials(HTTP_AUTHORIZATION="Token " + token.key)
         category = CategoryFactory()
         data = json.dumps(
-            {"title": "notebook", "price": 800.00,
-                "categories_id": [category.id]}
+            {
+                "title": "notebook", 
+             "price": 800.00,
+            "category_id": [category.id]
+            }
         )
 
         response = self.client.post(
