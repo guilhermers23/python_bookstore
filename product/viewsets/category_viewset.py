@@ -7,4 +7,4 @@ class CategoryViewSet(ModelViewSet):
     serializer_class = CategorySerializer
     ## queryset = Product.objects.all() ou
     def get_queryset(self):
-       return Category.objects.all()
+       return Category.objects.all().order_by('id')

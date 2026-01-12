@@ -7,4 +7,4 @@ class OrderViewSet(ModelViewSet):
     serializer_class = OrderSerializer
     #queryset = Order.objects.all()
     def get_queryset(self):
-        return Order.objects.all()
+        return Order.objects.all().order_by('id')

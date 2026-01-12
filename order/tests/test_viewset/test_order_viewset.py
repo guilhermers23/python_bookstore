@@ -7,6 +7,7 @@ from rest_framework.test import APIClient, APITestCase
 from order.factories import OrderFactory, UserFactory
 from order.models import Order
 from product.factories import CategoryFactory, ProductFactory
+from product.models import Product
 
 class TestOrderViewSet(APITestCase):
 
@@ -54,4 +55,3 @@ class TestOrderViewSet(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
         created_order = Order.objects.get(user=user)
-        
