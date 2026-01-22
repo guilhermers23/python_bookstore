@@ -1,7 +1,6 @@
 import json
 
 from django.urls import reverse
-from rest_framework.authtoken.models import Token
 from rest_framework.test import APIClient, APITestCase
 from rest_framework.views import status
 
@@ -33,12 +32,9 @@ class TestProductViewSet(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         product_data = json.loads(response.content)
 
-        self.assertEqual(product_data["results"]
-                         [0]["title"], self.product.title)
-        self.assertEqual(product_data["results"]
-                         [0]["price"], self.product.price)
-        self.assertEqual(product_data["results"]
-                         [0]["active"], self.product.active)
+        self.assertEqual(product_data["results"][0]["title"], self.product.title)
+        self.assertEqual(product_data["results"][0]["price"], self.product.price)
+        self.assertEqual(product_data["results"][0]["active"], self.product.active)
 
     def test_create_product(self):
         # token = Token.objects.get(user__username=self.user.username)
