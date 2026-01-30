@@ -4,6 +4,7 @@ from order.models import Order
 from product.models import Product
 from product.serializers.product_serializer import ProductSerializer
 
+
 class OrderSerializer(serializers.ModelSerializer):
     product = ProductSerializer(read_only=True, many=True)
     products_id = serializers.PrimaryKeyRelatedField(
@@ -29,4 +30,3 @@ class OrderSerializer(serializers.ModelSerializer):
             order.product.add(product)
 
         return order
-    

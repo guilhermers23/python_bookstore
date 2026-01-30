@@ -16,17 +16,18 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# SEGURANÇA: Mantenha a Secret Key em variável de ambiente!
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'django-insecure-o&bx13fby9^jkl@8_17(!k2e!-y=)n!t@dl@=+-o4se^s67x38')
+
+# DEBUG: No Docker/Produção, passamos 1 para True ou 0 para False no .env
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
+
+# RESOLVE O SEU ERRO: Adicione os hosts permitidos
+# O '*' permite qualquer host (ideal para dev com Docker)
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1,0.0.0.0').split(',')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-o&bx13fby9^jkl@8_17(!k2e!-y=)n!t@dl@=+-o4se^s67x38"
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -124,9 +125,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
-STATIC_URL = "static/"
-
-INTERNAL_IPS = [ '127.0.0.1', 'localhost']
+STATIC_URL = 'static/'
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
@@ -137,11 +137,3 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
     ]
 }
-
-SECRET_KEY = os.environ.get("SECRET_KEY")
-
-DEBUG = int(os.environ.get("DEBUG", default=0))
-
-# 'DJANGO_ALLOWED_HOSTS' should be a single string of hosts with a space between each.
-# For example: 'DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]'
-ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS","").split()
