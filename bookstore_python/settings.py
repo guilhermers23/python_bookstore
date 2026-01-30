@@ -24,7 +24,8 @@ DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 # RESOLVE O SEU ERRO: Adicione os hosts permitidos
 # O '*' permite qualquer host (ideal para dev com Docker)
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1,0.0.0.0').split(',')
+#ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1,0.0.0.0').split(',')
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0', 'guilhermers17.pythonanywhere.com']
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
