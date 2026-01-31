@@ -30,7 +30,7 @@ jobs:
       - name: Install dependencies
         shell: bash
         run: |
-          python lock
+          poetry lock
           python -m poetry install
 
       - name: Test
